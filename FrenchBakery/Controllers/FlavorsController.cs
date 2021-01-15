@@ -19,5 +19,17 @@ namespace FrenchBakery.Controllers
       List<Flavor> flavorList = _db.Flavors.ToList();
       return View(flavorList);
     }
+    public ActionResult Create()
+    {
+      return View();
+    }
+
+    [HttpPost]
+    public ActionResult Create(Flavor flavor)
+    {
+      _db.Flavors.Add(flavor);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }
