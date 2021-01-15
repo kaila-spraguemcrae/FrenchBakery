@@ -10,6 +10,7 @@ namespace FrenchBakery.Models
     }
     public int FlavorId { get; set; }
     public string Type { get; set; }
+    public string Description { get; set; }
     public ICollection<FlavorTreat> Treats { get; }
   }
 }

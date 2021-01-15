@@ -2,7 +2,7 @@
   Layout = "_Layout";
 }
 
-@model FrenchBakery.Models.Flavor
+@model FrenchBakery.Models.Flavor;
 
 <h1>Add a new Flavor</h1>
 <hr />
@@ -12,6 +12,10 @@
   <p>
     @Html.Label("Type of Flavor:")
     @Html.TextBoxFor(model => model.Type)
+  </p>
+  <p>
+    @Html.Label("Description:")
+    @Html.TextAreaFor(model => model.Description)
   </p>
 
   <p>

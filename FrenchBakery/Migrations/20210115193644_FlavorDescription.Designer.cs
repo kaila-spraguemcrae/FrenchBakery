@@ -3,14 +3,16 @@ using System;
 using FrenchBakery.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FrenchBakery.Solution.Migrations
 {
     [DbContext(typeof(FrenchBakeryContext))]
-    partial class FrenchBakeryContextModelSnapshot : ModelSnapshot
+    [Migration("20210115193644_FlavorDescription")]
+    partial class FlavorDescription
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
