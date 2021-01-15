@@ -6,7 +6,6 @@
 
 <h1>@Html.DisplayFor(model => model.Name)</h1>
 <p>Price: @Html.DisplayFor(model => model.Price)</p>
-<hr />
 
 @if(@Model.Flavors.Count == 0)
 {
@@ -15,30 +14,21 @@
 }
 else
 {
+  <p><strong>Flavor(s): </strong></p>
   @foreach(var join in Model.Flavors)
   {
-    @if(@Model.Flavors.Count <= 1)
+  
+    <p>@join.Flavor.Type</p>
+    @using (@Html.BeginForm("DeleteFlavor", "Treats"))
     {
-      <h2>Flavor:</h2>
-      <p>@join.Treat.Name</p>
-      @using (@Html.BeginForm("DeleteFlavor", "Treatss"))
-      {
-        @Html.Hidden("joinId", @join.FlavorTreatId)
-        <input type="submit" value="Delete" class="btn btn-light"/>
-      }
+      @Html.Hidden("joinId", @join.FlavorTreatId)
+      <input type="submit" value="Delete" class="btn btn-light"/>
     }
-    else
-    {
-      <p>@join.Treat.Name</p>
-      @using (@Html.BeginForm("DeleteFlavor", "Treatss"))
-      {
-        @Html.Hidden("joinId", @join.FlavorTreatId)
-        <input type="submit" value="Delete" class="btn btn-light"/>
-      }
-    }
+
   }
 }
+<hr />
 <br>
-<p>@Html.ActionLink("Add a Flavor", "AddTreat", new { id = Model.TreatId }, new { @class="btn btn-light" })</p>
+<p>@Html.ActionLink("Add a Flavor", "AddFlavor", new { id = Model.TreatId }, new { @class="btn btn-light" })</p>
 <p>@Html.ActionLink("Edit this Treat", "Edit", new { id = Model.TreatId }, new { @class="btn btn-light" })</p>
 <p>@Html.ActionLink("Delete this Treat", "Delete", new { id = Model.TreatId }, new { @class="btn btn-light" })</p>

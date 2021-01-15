@@ -89,7 +89,7 @@ namespace FrenchBakery.Controllers
     }
 
     [HttpPost]
-    public ActionResult DeleteMachine(int joinId)
+    public ActionResult DeleteTreat(int joinId)
     {
       var joinEntry = _db.FlavorTreat.FirstOrDefault(entry => entry.FlavorTreatId == joinId);
       _db.FlavorTreat.Remove(joinEntry);
