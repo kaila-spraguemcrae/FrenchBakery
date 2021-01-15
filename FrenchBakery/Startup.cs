@@ -28,7 +28,6 @@ namespace FrenchBakery
             services.AddEntityFrameworkMySql()
                 .AddDbContext<FrenchBakeryContext>(options => options
                 .UseMySql(Configuration["ConnectionStrings:DefaultConnection"]));
-
             
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<FrenchBakeryContext>()
