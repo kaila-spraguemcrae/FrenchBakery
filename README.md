@@ -9,9 +9,8 @@
 <p align = "center"> Created January 15, 2021 </p>
 
 <p align = "center">
-  <a href = "https://github.com/kaila-spraguemcrae">
-    <img style= "border-radius: 50% ; height: 150px; width: auto" src = "https://avatars1.githubusercontent.com/u/68969136?s=400&u=9656844bce97d3dc960e4012bcacc5458645885e&v=4">
-  </a>
+    <img style= "border-radius: 50%" src = "./ReadmeAssets/img/self1.jpg">
+
 </p>
 <p align = "center">
   By Kaila Sprague McRae
@@ -52,7 +51,7 @@ This project uses the following technologies:
 | Story# | User Story | Complete |
 | :------------- | :------------- | :------------- |
 | 01 |  A user should be able to log in and log out. | false |
-| 02 | Only logged in users should have create, update and delete functionality. All users should be able to have read functionality. | false |
+| 02 | Only logged in users should have create, update and delete functionality. All users should be able to have read functionality. | true |
 | 03 | A user should be able to navigate to a splash page that lists all treats and flavors. Users should be able to click on an individual treat or flavor to see all the treats/flavors that belong to it. | false |
 | 04 | Have separate roles for admins and logged-in users. Only admins should be able to add, update and delete. | false |
 | 05 | Add an order form that only logged-in users can access. A logged-in user should be able to create, read, update and delete their own order. | false |
