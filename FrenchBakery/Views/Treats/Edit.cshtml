@@ -1,0 +1,27 @@
+@{
+  Layout = "_Layout";
+}
+
+@model FrenchBakery.Models.Treat;
+
+<h1>Edit @Html.DisplayFor(model => model.Name)</h1>
+<hr />
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.TreatId)
+  <p>
+    @Html.Label("Type of Treat:")
+    @Html.TextBoxFor(model => model.Name, new { @class = "form-control", placeholder = "Name of Product" })
+  </p>
+  <p>
+    @Html.Label("Price:")
+    @Html.TextBoxFor(model => model.Price, new { @class = "form-control", type = "number", step = "0.01", max = "100000.00", placeholder = "Amount", required = "required" })
+  </p>
+
+  <p>
+    <input type="submit" value="Save" class="btn btn-light" />
+  </p>
+}
+
+<p>@Html.ActionLink("Back to details", "Details", new { id = Model.TreatId })</p>
