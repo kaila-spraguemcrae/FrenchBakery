@@ -1,0 +1,44 @@
+@{
+  Layout = "_Layout";
+}
+
+@model FrenchBakery.Models.Treat;
+
+<h1>@Html.DisplayFor(model => model.Name)</h1>
+<p>Price: @Html.DisplayFor(model => model.Price)</p>
+<hr />
+
+@if(@Model.Flavors.Count == 0)
+{
+  <h2>Flavors:</h2>
+  <p>There are no Treats associated with this flavor</p>
+}
+else
+{
+  @foreach(var join in Model.Flavors)
+  {
+    @if(@Model.Flavors.Count <= 1)
+    {
+      <h2>Flavor:</h2>
+      <p>@join.Treat.Name</p>
+      @using (@Html.BeginForm("DeleteFlavor", "Treatss"))
+      {
+        @Html.Hidden("joinId", @join.FlavorTreatId)
+        <input type="submit" value="Delete" class="btn btn-light"/>
+      }
+    }
+    else
+    {
+      <p>@join.Treat.Name</p>
+      @using (@Html.BeginForm("DeleteFlavor", "Treatss"))
+      {
+        @Html.Hidden("joinId", @join.FlavorTreatId)
+        <input type="submit" value="Delete" class="btn btn-light"/>
+      }
+    }
+  }
+}
+<br>
+<p>@Html.ActionLink("Add a Flavor", "AddTreat", new { id = Model.TreatId }, new { @class="btn btn-light" })</p>
+<p>@Html.ActionLink("Edit this Treat", "Edit", new { id = Model.TreatId }, new { @class="btn btn-light" })</p>
+<p>@Html.ActionLink("Delete this Treat", "Delete", new { id = Model.TreatId }, new { @class="btn btn-light" })</p>
