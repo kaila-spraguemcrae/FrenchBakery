@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace FrenchBakery.Models
 {
@@ -10,6 +11,7 @@ namespace FrenchBakery.Models
     }
     public int TreatId { get; set; }
     public string Name { get; set; }
+    [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:c}")]
     public float Price { get; set; }
     public ICollection<FlavorTreat> Flavors { get; }
   }

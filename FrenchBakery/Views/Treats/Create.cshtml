@@ -1,0 +1,24 @@
+@{
+  Layout = "_Layout";
+}
+
+@model FrenchBakery.Models.Treat;
+
+<h1>Add a new Treat</h1>
+<hr />
+
+@using (Html.BeginForm())
+{
+  <p>
+    @Html.Label("Name of Treat:")
+    @Html.TextBoxFor(model => model.Name, new { @class = "form-control", placeholder = "Name of Product"})
+  </p>
+  <p>
+    @Html.Label("Price:")
+    @Html.TextBoxFor(model => model.Price, new { @class = "form-control", type = "number", step = "0.01", max = "100000.00", placeholder = "Amount", required = "required" })
+  </p>
+
+  <p>
+    <input type="submit" value="Add new Treat" class="btn btn-light" />
+  </p>
+}
