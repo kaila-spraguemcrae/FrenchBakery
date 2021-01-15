@@ -52,7 +52,7 @@ namespace FrenchBakery.Controllers
     {
       _db.Entry(flavor).State = EntityState.Modified;
       _db.SaveChanges();
-      return RedirectToAction("Detail", new { id = flavor.FlavorId });
+      return RedirectToAction("Details", new { id = flavor.FlavorId });
     }
 
     public ActionResult Delete(int id)

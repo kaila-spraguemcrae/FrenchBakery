@@ -1,3 +1,17 @@
 @{
   Layout = "_Layout";
 }
+
+@model FrenchBakery.Models.Flavor;
+
+<h1>Delete @Html.DisplayFor(model => model.Type)</h1>
+<hr />
+
+@using (Html.BeginForm())
+{
+  <p>
+  <input type="submit" value="Delete" class="btn btn-dark" />
+  </p>
+}
+
+<p>@Html.ActionLink("Back to details", "Details", new { id = Model.FlavorId })</p>

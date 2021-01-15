@@ -4,9 +4,11 @@
 
 @model FrenchBakery.Models.Flavor;
 
-<h1>Treats with this Flavor:</h1>
+<h1>Flavor: @Html.DisplayFor(model => model.Type)</h1>
+<p>@Html.DisplayFor(model => model.Description)</p>
 <hr />
 
+<h2>Treats with this Flavor:</h2>
 @if(@Model.Treats.Count == 0)
 {
   <p>There are no Treats associated with this flavor</p>
@@ -25,7 +27,7 @@ else
     }
   </ul>
 }
-
+<br>
 <p>@Html.ActionLink("Add a Treat", "AddTreat", new { id = Model.FlavorId }, new { @class="btn btn-light" })</p>
 <p>@Html.ActionLink("Edit this Flavor", "Edit", new { id = Model.FlavorId }, new { @class="btn btn-light" })</p>
 <p>@Html.ActionLink("Delete this Flavor", "Delete", new { id = Model.FlavorId }, new { @class="btn btn-light" })</p>
