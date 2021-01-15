@@ -1,0 +1,17 @@
+@{
+  Layout = "_Layout";
+}
+
+@model FrenchBakery.Models.Treat;
+
+<h1>Delete @Html.DisplayFor(model => model.Name)</h1>
+<hr />
+
+@using (Html.BeginForm())
+{
+  <p>
+  <input type="submit" value="Delete" class="btn btn-dark" />
+  </p>
+}
+
+<p>@Html.ActionLink("Back to details", "Details", new { id = Model.TreatId })</p>
