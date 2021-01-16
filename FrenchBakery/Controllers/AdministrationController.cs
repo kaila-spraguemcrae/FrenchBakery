@@ -71,5 +71,18 @@ namespace FrenchBakery.Controllers
       }
       return View(model);
     }
+
+    [HttpPost]
+    public async Task<IActionResult> EditRole(EditRoleViewModel model)
+    {
+      var role = await roleManager.FindByIdAsync(model.Id);
+      role.Name = model.RoleName;
+      var result = await roleManager.UpdateAsync(role);
+      if(result.Succeeded)
+      {
+        return RedirectToAction("ListRoles");
+      }
+      return View(model);
+    }
   }
 }
