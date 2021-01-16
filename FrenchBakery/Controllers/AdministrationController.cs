@@ -7,21 +7,41 @@ using System;
 
 namespace FrenchBakery.Controllers
 {
-  public class AdministrationContoller: Controller
+  public class AdministrationController: Controller
   {
     private readonly RoleManager<IdentityRole> roleManager;
 
-    public AdministrationContoller(RoleManager<IdentityRole> roleManager)
+    public AdministrationController(RoleManager<IdentityRole> roleManager)
     {
       this.roleManager = roleManager;
     }
-    public ActionResult Index()
+    public IActionResult CreateRole()
     {
       return View();
     }
-    public ActionResult CreateRole()
+
+    [HttpPost]
+    public async Task<IActionResult> CreateRole(CreateRoleViewModel model)
     {
-      return View();
+      if(ModelState.IsValid)
+      {
+        IdentityRole identityRole = new IdentityRole
+        {
+          Name = model.RoleName
+        };
+
+        IdentityResult result = await roleManager.CreateAsync(identityRole);
+
+        if(result.Succeeded)
+        {
+          return RedirectToAction("Index", "Home");
+        } 
+        foreach (IdentityError error in result.Errors)
+        {
+          ModelState.AddModelError("", error.Description);
+        }
+      }
+      return View(model);
     }
   }
 }
