@@ -62,11 +62,11 @@ This project uses the following technologies:
 
 ## 🐛 Known Bugs
 
-01.15.2021  No known bugs at this time
 
-<!-- | Date | Error | Handled | Solution |
+
+| Date | Error | Handled | Solution |
 | :------------- | :------------- | :------------- | :------------- |
-|  |  |  |  | -->
+| 01.15.2021 | `User.Identity.IsAuthenticated` always returns `false` | true | add `app.UseAuthentication();` to Startup.cs |
 
 -------------------
 

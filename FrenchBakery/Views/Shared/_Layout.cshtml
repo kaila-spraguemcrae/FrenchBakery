@@ -1,6 +1,8 @@
-﻿<!DOCTYPE html>
-<html>
+﻿@* @using Microsoft.AspNetCore.Identity;
+@inject SignInManager<IdentityUser> signInManager; *@
 
+<!DOCTYPE html>
+<html>
 <head>
     <meta charset="utf-8" />
     <title>French Bakery</title>
@@ -20,12 +22,23 @@
             </li>
         </ul>
         <ul class="nav">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <li class="nav-item">
+                    <form method="post" asp-action="logout" asp-controller="account">
+                        <button type="submit" class="nav-link btn btn-link text-dark" style="width:auto">Logout @User.Identity.Name</button>
+                    </form>
+                </li>
+            }
+            else
+            {
             <li class="nav-item">
                 <a class="nav-link text-dark" href="/account/register">Register</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-dark" href="/account/login">Login</a>
             </li>
+            }
         </ul>
     </nav>
 
