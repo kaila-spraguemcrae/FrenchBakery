@@ -1,4 +1,3 @@
-
 using FrenchBakery.Models;
 using FrenchBakery.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -41,6 +40,7 @@ namespace FrenchBakery.Controllers
         FirstName = model.FirstName,
         LastName = model.LastName
       };
+      
       IdentityResult result = await _userManager.CreateAsync(user, model.Password);
       if (result.Succeeded)
       {

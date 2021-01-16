@@ -46,8 +46,8 @@ namespace FrenchBakery
 
         public void Configure(IApplicationBuilder app)
         {
+            app.UseDefaultFiles();
             app.UseStaticFiles();
-
             app.UseDeveloperExceptionPage();
 
             app.UseAuthentication();
