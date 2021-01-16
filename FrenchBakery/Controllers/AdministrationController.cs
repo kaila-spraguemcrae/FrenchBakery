@@ -34,7 +34,7 @@ namespace FrenchBakery.Controllers
 
         if(result.Succeeded)
         {
-          return RedirectToAction("Index", "Home");
+          return RedirectToAction("ListRoles", "Administration");
         } 
         foreach (IdentityError error in result.Errors)
         {
@@ -42,6 +42,11 @@ namespace FrenchBakery.Controllers
         }
       }
       return View(model);
+    }
+    public IActionResult ListRoles()
+    {
+      var roles = roleManager.Roles;
+      return View(roles);
     }
   }
 }
