@@ -1,7 +1,4 @@
-﻿@* @using Microsoft.AspNetCore.Identity;
-@inject SignInManager<IdentityUser> signInManager; *@
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -25,9 +22,10 @@
             @if (User.Identity.IsAuthenticated)
             {
                 <li class="nav-item">
-                    <form method="post" asp-action="logout" asp-controller="account">
-                        <button type="submit" class="nav-link btn btn-link text-dark" style="width:auto">Logout @User.Identity.Name</button>
-                    </form>
+                    @using (Html.BeginForm("LogOff", "Account"))
+                    {
+                        <input type="submit" class="nav-link btn btn-link text-dark" style="width:auto" value="Logout @User.Identity.Name">
+                    }
                 </li>
             }
             else
