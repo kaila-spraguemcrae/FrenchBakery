@@ -1,11 +1,11 @@
+@{
+  Layout = "_Layout";
+}
+
 @model IEnumerable<Microsoft.AspNetCore.Identity.IdentityRole>
 
 @{
     ViewBag.Title = "All Roles";
-}
-
-@{
-  Layout = "_Layout";
 }
 
 <h1>All Roles:</h1>
@@ -24,8 +24,8 @@
         <h3 class="card-title">@role.Name</h3>
       </div>
       <div class="card-footer">
-        @Html.ActionLink("Edit", "Edit", "Administration", null, new { @class="btn btn-light" })
-        @Html.ActionLink("Delete", "Delete", "Administration", null, new { @class="btn btn-light" })
+        @Html.ActionLink("Edit", "EditRole", "Administration", new { id = role.Id }, new { @class="btn btn-light" })
+        @Html.ActionLink("Delete", "DeleteRole", "Administration", null, new { @class="btn btn-light" })
       </div>
     </div>
     <hr />
