@@ -48,6 +48,7 @@ namespace FrenchBakery
         {
             app.UseDefaultFiles();
             app.UseStaticFiles();
+            
             app.UseDeveloperExceptionPage();
 
             app.UseAuthentication();
