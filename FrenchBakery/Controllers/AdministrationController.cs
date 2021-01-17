@@ -115,27 +115,46 @@ namespace FrenchBakery.Controllers
         return View(model);
     }
 
-    [HttpPost]
-    public async Task<IActionResult> EditUsersInRole(List<UserRoleViewModel> model, string id)
-    {
-      var role = await roleManager.FindByIdAsync(id);
+   [HttpPost]
+public async Task<IActionResult> EditUsersInRole(List<UserRoleViewModel> model, string id)
+{
+    var role = await roleManager.FindByIdAsync(id);
 
-      for(int i = 0; i < model.Count; i++)
-      {
+    if (role == null)
+    {
+        ViewBag.ErrorMessage = $"Role with Id = {id} cannot be found";
+        return View("NotFound");
+    }
+
+    for (int i = 0; i < model.Count; i++)
+    {
         var user = await userManager.FindByIdAsync(model[i].UserId);
 
         IdentityResult result = null;
 
-        if(model[i].IsSelected && (await userManager.IsInRoleAsync(user, role.Name)))
+        if (model[i].IsSelected && !(await userManager.IsInRoleAsync(user, role.Name)))
         {
-          result = await userManager.AddToRoleAsync(user, role.Name);
+            result = await userManager.AddToRoleAsync(user, role.Name);
         }
-        else if(!model[i].IsSelected && (await userManager.IsInRoleAsync(user, role.Name)))
+        else if (!model[i].IsSelected && await userManager.IsInRoleAsync(user, role.Name))
         {
-          result = await userManager.RemoveFromRoleAsync(user, role.Name);
+            result = await userManager.RemoveFromRoleAsync(user, role.Name);
         }
-      }
-      return View();
+        else
+        {
+            continue;
+        }
+
+        if (result.Succeeded)
+        {
+            if (i < (model.Count - 1))
+                continue;
+            else
+                return RedirectToAction("EditRole", new { Id = id });
+        }
     }
+
+    return RedirectToAction("EditRole", new { Id = id });
+}
   }
 }
