@@ -2,11 +2,56 @@
   Layout = "_Layout";
 }
 
+@using FrenchBakery.Models;
+
 <div class="jumbotron">
-  <h1 class="display-1"><strong>Pierre's French Bakery</strong></h1>
-  <h1 class="display-3">of</h1>
-  <h1 class="display-2">Sweet and Savory Treats</h1>
+  <h1 class="display-1 title"><strong>Pierre's French Bakery</strong><span class="display-3"> of </span>
+  Sweet and Savory Treats</h1>
 </div>
+<hr />
 
-
-  <img class= "homeImg" src="~/img/macaroons.jpg">
+<div class="card menu">
+  <div class="card-header">
+    <h1 class="display-2" align="center">
+      Menu
+    </h1>
+  </div>
+  <div class="card-body">
+    @{
+      List<Treat>treatsList = ViewBag.Treats;
+      @if(treatsList.Count() == 0)
+      {
+        <h3>There are no Products at this time</h3>
+      }
+      @foreach(Treat treat in ViewBag.Treats)
+      {
+        <ul class="list-group list-group-flush" align="center">
+            <li class="list-group-item menu-items">@Html.ActionLink($"{treat.Name}", "Details", "Treats", new { id = treat.TreatId}) | @Html.DisplayFor(model => treat.Price)</li>
+        </ul>
+      }
+    }
+  </div>
+</div>
+<br>
+<div class="card flavor">
+  <div class="card-header">
+    <h3 class="display-5" align="center">
+      Flavors currently available
+    </h3>
+  </div>
+  <div class="card-body">
+    @{
+      List<Flavor>flavorsList = ViewBag.Flavors;
+      @if(flavorsList.Count() == 0)
+      {
+        <h4>There are no Flavors at this time</h4>
+      }
+      @foreach(Flavor flavor in ViewBag.Flavors)
+      {
+        <ul class="list-group list-group-flush" align="center">
+            <li class="list-group-item menu-items">@Html.ActionLink($"{flavor.Type}", "Details", "Treats", new { id = flavor.FlavorId})</li>
+        </ul>
+      }
+    }
+  </div>
+</div>
