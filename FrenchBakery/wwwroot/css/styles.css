@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+body {
+  font-size: 20px;
+}
+
 .navbar-custom {
   height: 100px;
 }
@@ -16,6 +20,10 @@
 }
 
 .nav-item {
+  font-size: 20px;
+}
+
+.btn {
   font-size: 20px;
 }
 
@@ -47,6 +55,13 @@ textarea {
 }
 
 .flavor {
+  max-width: 900px;
+  margin: 0 auto;
+  float: none;
+  margin-bottom: 10px;
+}
+
+.custom-card {
   max-width: 900px;
   margin: 0 auto;
   float: none;

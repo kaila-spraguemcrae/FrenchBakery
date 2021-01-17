@@ -4,30 +4,37 @@
 
 @model FrenchBakery.Models.Flavor;
 
-<h1>Flavor: @Html.DisplayFor(model => model.Type)</h1>
-<p>@Html.DisplayFor(model => model.Description)</p>
-<hr />
-
-<h2>Treats with this Flavor:</h2>
-@if(@Model.Treats.Count == 0)
-{
-  <p>There are no Treats associated with this flavor</p>
-}
-else
-{
-  <ul>
-    @foreach(var join in Model.Treats)
-    {
-      <li>@join.Treat.Name</li>
-      @using (@Html.BeginForm("DeleteTreat", "Flavors"))
-      {
-        @Html.Hidden("joinId", @join.FlavorTreatId)
-        <input type="submit" value="Delete" class="btn btn-light"/>
-      }
-    }
-  </ul>
-}
 <br>
-<p>@Html.ActionLink("Add a Treat", "AddTreat", new { id = Model.FlavorId }, new { @class="btn btn-light" })</p>
-<p>@Html.ActionLink("Edit this Flavor", "Edit", new { id = Model.FlavorId }, new { @class="btn btn-light" })</p>
-<p>@Html.ActionLink("Delete this Flavor", "Delete", new { id = Model.FlavorId }, new { @class="btn btn-light" })</p>
+<div class="card custom-card">
+  <div class="card-header">
+    <h1>Flavor: @Html.DisplayFor(model => model.Type)</h1>
+    <p>@Html.DisplayFor(model => model.Description)</p>
+  </div>
+  <div class="card-body">
+    <h2 class="card-title">Treats with this Flavor:</h2>
+    @if(@Model.Treats.Count == 0)
+    {
+      <p>There are no Treats associated with this flavor</p>
+    }
+    else
+    {
+      <ul class="list-group" align="center">
+        @foreach(var join in Model.Treats)
+        {
+          <li class="list-group-item list-group-item-action text-dark">@join.Treat.Name
+          @using (@Html.BeginForm("DeleteTreat", "Flavors"))
+          {
+            @Html.Hidden("joinId", @join.FlavorTreatId)
+            <input type="submit" value="Delete" class="btn btn-outline-secondary" display= "inline-block"/>
+          }
+          </li>
+        }
+      </ul>
+    }
+  </div>
+  <div class="card-footer">
+    @Html.ActionLink("Add a Treat", "AddTreat", new { id = Model.FlavorId }, new { @class="btn btn-outline-secondary" })
+    @Html.ActionLink("Edit this Flavor", "Edit", new { id = Model.FlavorId }, new { @class="btn btn-outline-secondary" })
+    @Html.ActionLink("Delete this Flavor", "Delete", new { id = Model.FlavorId }, new { @class="btn btn-outline-secondary" })
+  </div>
+</div>
