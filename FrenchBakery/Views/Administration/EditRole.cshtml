@@ -50,8 +50,7 @@
         }
       </div>
       <div class="card-footer">
-        @Html.ActionLink("Add Users", "AddUser", "Administration", null, new { @class="btn btn-light" })
-        @Html.ActionLink("Remove Users", "DeleteUser", "Administration", null, new { @class="btn btn-light" })
+        @Html.ActionLink("Add or Remove Users", "EditUsersInRole", "Administration", new { id = Model.Id }, new { @class="btn btn-light" })
       </div>
     </div>
 }
