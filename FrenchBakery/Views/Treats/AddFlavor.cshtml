@@ -4,18 +4,25 @@
 
 @model FrenchBakery.Models.Treat;
 
-<h1>Add a Flavor for @Html.DisplayFor(model => model.Name)</h1>
-<hr />
+<br>
+<div class="card custom-card">
+  <div class="card-header">
+    <h1>Add a Flavor for @Html.DisplayFor(model => model.Name)</h1>
+  </div>
 
 @using (Html.BeginForm())
 {
-  @Html.HiddenFor(model => model.TreatId)
-  <p>
-    @Html.Label("Add Flavor")
-    @Html.DropDownList("FlavorId")
-  </p>
-  <p>
-    <input type="submit" value="Save" class="btn btn-dark" />
-  </p>
+  <div class="card-body">
+    <div class="form-group">
+      @Html.HiddenFor(model => model.TreatId)
+      
+      @Html.Label("Add Flavor")
+      @Html.DropDownList("FlavorId")
+    </div>
+  </div>
+  <div class="card-footer">
+      <input type="submit" value="Save" class="btn btn-dark" />
+      @Html.ActionLink("Back to details", "Details", new { id = Model.TreatId })
+  </div>
 }
-  <p>@Html.ActionLink("Back to details", "Details", new { id = Model.TreatId })</p>
+</div>
