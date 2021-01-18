@@ -21,20 +21,27 @@
       <ul class="list-group" align="center">
         @foreach(var join in Model.Treats)
         {
-          <li class="list-group-item list-group-item-action text-dark">@join.Treat.Name
-          @using (@Html.BeginForm("DeleteTreat", "Flavors"))
+          <li class="list-group-item text-dark">@Html.ActionLink($"{ join.Treat.Name }", "Details", "Treats", new { id = join.Treat.TreatId })
+          @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
           {
-            @Html.Hidden("joinId", @join.FlavorTreatId)
-            <input type="submit" value="Delete" class="btn btn-outline-secondary" display= "inline-block"/>
+            @using (@Html.BeginForm("DeleteTreat", "Flavors"))
+            {
+              @Html.Hidden("joinId", @join.FlavorTreatId)
+              <input type="submit" value="Delete" class="btn btn-outline-secondary" display= "inline-block"/>
+            }
           }
           </li>
         }
       </ul>
     }
   </div>
+  @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+  {
   <div class="card-footer">
     @Html.ActionLink("Add a Treat", "AddTreat", new { id = Model.FlavorId }, new { @class="btn btn-outline-secondary" })
     @Html.ActionLink("Edit this Flavor", "Edit", new { id = Model.FlavorId }, new { @class="btn btn-outline-secondary" })
     @Html.ActionLink("Delete this Flavor", "Delete", new { id = Model.FlavorId }, new { @class="btn btn-outline-secondary" })
   </div>
+  } 
+
 </div>

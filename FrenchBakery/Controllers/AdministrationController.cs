@@ -1,13 +1,15 @@
 using FrenchBakery.Models;
 using FrenchBakery.ViewModels;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System;
 
 namespace FrenchBakery.Controllers
 {
+  [Authorize]
   public class AdministrationController: Controller
   {
     private readonly RoleManager<IdentityRole> roleManager;

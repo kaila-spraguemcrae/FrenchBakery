@@ -30,7 +30,14 @@
                 <li class="nav-item">
                     @using (Html.BeginForm("LogOff", "Account"))
                     {
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <input type="submit" class="nav-item btn btn-link text-white" style="width:auto" value="Logout of ADMIN @User.Identity.Name">
+                        }
+                        else
+                        {
                         <input type="submit" class="nav-item btn btn-link text-white" style="width:auto" value="Logout @User.Identity.Name">
+                        }
                     }
                 </li>
             }

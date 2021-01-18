@@ -95,6 +95,7 @@ namespace FrenchBakery.Controllers
       return RedirectToAction("Details", new { id = flavor.FlavorId });
     }
 
+    [Authorize(Roles = "Admin")]
     [HttpPost]
     public ActionResult DeleteTreat(int joinId)
     {

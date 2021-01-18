@@ -23,7 +23,10 @@
       </ul>
     }
   </div>
+  @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+  {
   <div class="card-footer">
     @Html.ActionLink("Add a new Flavor", "Create", "Flavors", null, new { @class="btn btn-outline-secondary" })
   </div>
+  }
 </div>

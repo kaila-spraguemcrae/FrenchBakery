@@ -23,9 +23,12 @@
       </ul>
     }
   </div>
-  <div class="card-footer">
-    @Html.ActionLink("Add a new Treat", "Create", "Treats", null, new { @class="btn btn-outline-secondary" })
-  </div>
+  @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+  {
+    <div class="card-footer">
+      @Html.ActionLink("Add a new Treat", "Create", "Treats", null, new { @class="btn btn-outline-secondary" })
+    </div>
+  }
 </div>
 
 
