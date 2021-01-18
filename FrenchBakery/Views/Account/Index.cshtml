@@ -1,22 +1,35 @@
   
 @{
   Layout = "_Layout";
-}
+} 
 
 @using System.Security.Claims
 
-<h2>Authentication with Identity</h2>
-<hr />
+<br>
+<div class="card custom-card">
+  <div class="card-header">
+    <h1 class="display-4">Account Info</h1>
+  </div>
 @if (User.Identity.IsAuthenticated)
 {
-  <p>Hello @User.Identity.Name!</p>
-  @using (Html.BeginForm("LogOff", "Account"))
-  {
-    <input type="submit" class="btn btn-light" value="Log out" />
-  }
+  <div class="card-body">
+    <p>Hello @User.Identity.Name!</p>
+  </div>
+  <div class="card-footer">
+    @using (Html.BeginForm("LogOff", "Account"))
+    {
+      <input type="submit" class="btn btn-outline-danger" value="Log out" />
+      @Html.ActionLink("Manage User Roles", "ListRoles", "Administration", null, new { @class="btn btn-outline-secondary" })
+    }
+  </div>
 }
 else
 {
-  <p>@Html.ActionLink("Register", "Register", null, null, new { @class="btn btn-light" })</p>
-  <p>@Html.ActionLink("Log in", "Login", null, null, new { @class="btn btn-light" })</p>
+  <div class="card-body">
+    <p>Please login or register</p>
+  </div>
+  <div class="card-footer">
+    @Html.ActionLink("Register", "Register", null, null, new { @class="btn btn-outline-secondary" })
+    @Html.ActionLink("Log in", "Login", null, null, new { @class="btn btn-outline-secondary" })
+  </div>
 }
