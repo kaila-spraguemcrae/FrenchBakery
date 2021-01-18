@@ -1,4 +1,6 @@
 using FrenchBakery.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -20,6 +22,7 @@ namespace FrenchBakery.Controllers
       return View(treatList);
     }
 
+    [Authorize(Roles = "Admin")]
     public ActionResult Create()
     {
       return View();
@@ -32,7 +35,7 @@ namespace FrenchBakery.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
-
+    
     public ActionResult Details(int id)
     {
       var thisTreat = _db.Treats
@@ -42,6 +45,7 @@ namespace FrenchBakery.Controllers
       return View(thisTreat);
     }
 
+    [Authorize(Roles = "Admin")]
     public ActionResult Edit(int id)
     {
       var thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
@@ -56,6 +60,7 @@ namespace FrenchBakery.Controllers
       return RedirectToAction("Details", new { id = treat.TreatId });
     }
 
+    [Authorize(Roles = "Admin")]
     public ActionResult Delete(int id)
     {
       var thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
@@ -71,6 +76,7 @@ namespace FrenchBakery.Controllers
       return RedirectToAction("Index");
     }
 
+    [Authorize(Roles = "Admin")]
     public ActionResult AddFlavor(int id)
     {
       var thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);

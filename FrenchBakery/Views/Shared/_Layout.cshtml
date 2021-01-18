@@ -17,6 +17,12 @@
             <li class="nav-item">
                 <a class="nav-link text-white" href="/treats">Treat Directory</a>
             </li>
+            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+            {
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="administration/listroles">Manage User Roles</a>
+                </li>
+            }
         </ul>
         <ul class="nav">
             @if (User.Identity.IsAuthenticated)

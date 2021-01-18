@@ -100,22 +100,13 @@ namespace FrenchBakery.Controllers
                 IsSelected = await userManager.IsInRoleAsync(user, role.Name)
             };
 
-            // if (await userManager.IsInRoleAsync(user, role.Name))
-            // {
-            //     userRoleViewModel.IsSelected = true;
-            // }
-            // else
-            // {
-            //     userRoleViewModel.IsSelected = false;
-            // }
-
             model.Add(userRoleViewModel);
         }
 
         return View(model);
     }
 
-   [HttpPost]
+[HttpPost]
 public async Task<IActionResult> EditUsersInRole(List<UserRoleViewModel> model, string id)
 {
     var role = await roleManager.FindByIdAsync(id);
