@@ -25,7 +25,6 @@
       </div>
       <div class="card-footer">
         @Html.ActionLink("Edit", "EditRole", "Administration", new { id = role.Id }, new { @class="btn btn-light" })
-        @Html.ActionLink("Delete", "DeleteRole", "Administration", null, new { @class="btn btn-light" })
       </div>
     </div>
     <hr />
@@ -38,7 +37,7 @@ else
       No roles have neen created
     </div>
     <div class="card-body">
-      <p class="card title ">
+      <p class="card-title ">
         Use button to create a role
       </p>
       @Html.ActionLink("Create Role", "CreateRole", "Administration", null, new { @class="btn btn-light" })

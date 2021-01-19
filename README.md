@@ -4,14 +4,10 @@
 </h1>
 
 <p align = "center">
-  This is a website for a French Bakery which allows users to login and create an orders. 
+  This is a website for a French Bakery which allows users create an account and view, create, edit and delete treats and flavors according to their user role. 
 </p>
 <p align = "center"> Created January 15, 2021 </p>
 
-<p align = "center">
-    <img style= "border-radius: 50%" src = "./ReadmeAssets/img/self1.jpg">
-
-</p>
 <p align = "center">
   By Kaila Sprague McRae
 </p>
@@ -20,9 +16,20 @@
 
 ## 📖  Description
 
-This is a website for Pierre's French Bakery which allows users to create an account. The user can login and create an order for Pierre's Bakery. 
+This is a website for Pierre's French Bakery which allows users to create an account. This application allows registered users to be assigned to different user roles. The "Admin" role allows for full access to the web application.  
 
 This is the Independent Project for Epicodus week 12 as part of the "Authentication with Identity" coursework. 
+
+<br>
+<h3 align = "center">Regular authenticated user:</h3>
+<p align = "center">
+  <img src="https://media.giphy.com/media/yk0RvSBrvzCLrEdwg6/giphy.gif">
+</p>
+
+Stretch Goals:
+- allow users to add Treats to an Order
+- Create View for Authorization Error Handling 
+- Display Login Error, such as inccorect password or username
 
 --------------------
 
@@ -42,18 +49,15 @@ This project uses the following technologies:
 
 ## Specifications
 
-<!-- ![SQL Design]( "SQL Database Design") -->
-
-
 <details>
 <summary>User Stories</summary>
 
 | Story# | User Story | Complete |
 | :------------- | :------------- | :------------- |
-| 01 |  A user should be able to log in and log out. | false |
+| 01 |  A user should be able to log in and log out. | true|
 | 02 | Only logged in users should have create, update and delete functionality. All users should be able to have read functionality. | true |
-| 03 | A user should be able to navigate to a splash page that lists all treats and flavors. Users should be able to click on an individual treat or flavor to see all the treats/flavors that belong to it. | false |
-| 04 | Have separate roles for admins and logged-in users. Only admins should be able to add, update and delete. | false |
+| 03 | A user should be able to navigate to a splash page that lists all treats and flavors. Users should be able to click on an individual treat or flavor to see all the treats/flavors that belong to it. | true |
+| 04 | Have separate roles for admins and logged-in users. Only admins should be able to add, update and delete. | true |
 | 05 | Add an order form that only logged-in users can access. A logged-in user should be able to create, read, update and delete their own order. | false |
 
 </details>
@@ -121,6 +125,23 @@ Go to my GitHub repository here, [https://guthub.com/kaila.spraguemcrae/FrenchBa
 
 1. Once you have opened the code in your preferred text editor you will need to navigate to the 'FrenchBakery.Solution/FrenchBakery' folder (`cd FrenchBakery`) in the command line and run `dotnet run` or `dotnet watch run`.
 2. At this point you should be able to click on the link to the local server's url path to view the compiled project. 
+
+#### Setting up User Roles and granting "Admin" permissions
+
+<h4>Creating a new Admin user role:</h4>
+<p>
+  <img src= "https://media.giphy.com/media/tzDIALhp0BzeFpVL3V/giphy.gif"> 
+</p>
+
+
+1. From the splash page navigate to "Register" and fill out the form.
+2. Click "Log in" and fill out the form.
+3. Click "Manager User Roles" and then click "Create Role" and name the new role *"Admin"*.
+4. Next to add your account to the "Admin" role, click "Edit" and then click "Add or Remove Users".
+5. Check the checkbox next to your user email and then click "Update"
+6. To have to the role update your permission Logout and then Log back into your account. You should now see "Manage User Roles" and "ADMIN" in the navbar. 
+
+*To have full access to the web application you will need to add the User Role "Admin" to your account.
 
 --------------------------
 
