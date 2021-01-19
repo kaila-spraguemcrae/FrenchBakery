@@ -9,21 +9,19 @@
   <div class="card-header">
     <h1 class="display-4">Add a Treat for @Html.DisplayFor(model => model.Type)</h1>
   </div>
+  @using (Html.BeginForm())
+  {
+    <div class="card-body">
+      <div class="form-group">
+        @Html.HiddenFor(model => model.FlavorId)
 
-
-@using (Html.BeginForm())
-{
-  <div class="card-body">
-    <div class="form-group">
-      @Html.HiddenFor(model => model.FlavorId)
-
-      @Html.Label("Add Treat")
-      @Html.DropDownList("TreatId")
+        @Html.Label("Add Treat")
+        @Html.DropDownList("TreatId")
+      </div>
     </div>
-  </div>
-  <div class="card-footer">
-    <input type="submit" value="Save" class="btn btn-outline-secondary" />
-    @Html.ActionLink("Back to details", "Details", new { id = Model.FlavorId }, new { @class="btn btn-outline-secondary" })
-  </div>
-}
+    <div class="card-footer">
+      <input type="submit" value="Save" class="btn btn-outline-secondary" />
+      @Html.ActionLink("Back to details", "Details", new { id = Model.FlavorId }, new { @class="btn btn-outline-secondary" })
+    </div>
+  }
 </div>
